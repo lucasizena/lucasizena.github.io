@@ -1,0 +1,30 @@
+{% if post.taxonomies.tags %}
+  {% set filter_mode = archive_filter_mode | default(value=false) %}
+
+  <span class="post-tags" role="group" aria-label="Tags">
+    {% for tag in post.taxonomies.tags %}
+      {% if filter_mode %}
+        <button
+          class="tag-chip"
+          type="button"
+          data-archive-tag="{{ tag }}"
+          aria-pressed="false"
+        >{{ tag }}</button>
+
+      {% elif wall_view is defined %}
+        <a
+          class="tag-chip"
+          href="{{ get_url(path='@/archive/_index.md') }}"
+          data-archive-link-tag="{{ tag }}"
+        >{{ tag }}</a>
+
+      {% else %}
+        <a
+          class="tag-chip"
+          href="{{ get_taxonomy_url(kind='tags', term=tag) | safe }}"
+          rel="tag"
+        >{{ tag }}</a>
+      {% endif %}
+    {% endfor %}
+  </span>
+{% endif %}

@@ -1,0 +1,71 @@
+<h5 class="post-heading{% if post.title %} has-title{% endif %}">
+  {% if post.title %}
+    <a
+      class="post-title-link"
+      href="{{ post.permalink }}"
+      rel="bookmark"
+    >
+      <span class="post-title-line">{{ post.title }}</span>
+    </a>
+  {% endif %}
+
+  <span class="post-meta-line">
+    <a
+      class="post-date-link"
+      href="{{ post.permalink }}"
+      rel="bookmark"
+    >
+      <time class="published" datetime="{{ post.date }}">
+        {{ post.date | date(format="%b %-d, %Y") }}
+      </time>
+    </a>
+
+    {% include "partials/tags.html" %}
+  </span>
+</h5>
+
+<div
+  class="post-body{% if wall_view %} is-collapsible{% endif %}"
+  id="post-body-{{ post.slug }}"
+  {% if wall_view %}
+    data-collapsible
+    data-collapse-button="post-toggle-{{ post.slug }}"
+  {% endif %}
+>
+  <div class="post-body-content">
+    {{ post.content | safe }}
+  </div>
+</div>
+
+{% if wall_view %}
+  <span class="post-collapse-blur" aria-hidden="true"></span>
+
+  <button
+    class="read-more"
+    id="post-toggle-{{ post.slug }}"
+    type="button"
+    aria-controls="post-body-{{ post.slug }}"
+    aria-expanded="false"
+    hidden
+  >
+    <span class="read-more-label">Show more</span>
+    <svg
+      class="read-more-arrow"
+      viewBox="0 0 24 24"
+      width="12"
+      height="12"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 5v13M6 13l6 6 6-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+  </button>
+{% endif %}
+
+<hr>

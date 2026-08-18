@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Tags | {{ config.title }}{% endblock title %}
+
+{% block content %}
+  <h1>Tags</h1>
+
+  <div class="tag-cloud">
+    {% for tag in terms %}
+      <a class="tag-chip" href="{{ tag.permalink | safe }}">
+        {{ tag.name }} <span class="tag-count">{{ tag.page_count }}</span>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock content %}

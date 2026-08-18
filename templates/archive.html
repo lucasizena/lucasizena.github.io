@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Archive | {{ config.title }}{% endblock title %}
+
+{% block content %}
+  {% set archive_filter_mode = true %}
+  <div class="archive-heading-row">
+    <h1 class="small-page-heading">Archive</h1>
+
+    <div class="archive-search" role="search">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5"></circle>
+        <path d="m16 16 4.25 4.25"></path>
+      </svg>
+
+      <label class="visually-hidden" for="archive-search-input">
+        Search post titles and tags
+      </label>
+      <input
+        class="archive-search-input"
+        id="archive-search-input"
+        type="search"
+        placeholder="Search"
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </div>
+  </div>
+
+  <p class="archive-search-status visually-hidden" role="status" aria-live="polite"></p>
+
+  {% set tags = get_taxonomy(kind="tags", required=false) %}
+  {% if tags and tags.items %}
+    <section class="archive-tags" aria-labelledby="archive-tags-heading">
+      <h2 id="archive-tags-heading">Browse by tag</h2>
+
+      <div class="tag-cloud">
+        {% for tag in tags.items %}
+            <button
+            class="tag-chip"
+            type="button"
+            data-archive-tag="{{ tag.name }}"
+            aria-pressed="false"
+            >
+            {{ tag.name }}
+            <span class="tag-count">{{ tag.page_count }}</span>
+            </button>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% set wall = get_section(path="_index.md") %}
+  <ol class="archive-list">
+    {% for post in wall.pages %}
+      {% include "partials/archive-entry.html" %}
+    {% endfor %}
+  </ol>
+
+  <p class="archive-search-empty" hidden>No matching posts.</p>
+{% endblock content %}

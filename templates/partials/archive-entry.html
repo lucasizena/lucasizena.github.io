@@ -1,0 +1,25 @@
+{% set legacy_title = post.extra.post_title | default(value="") %}
+
+<li class="archive-entry">
+  <div class="archive-entry-main">
+    <a href="{{ post.permalink }}">
+    {% if legacy_title %}
+      <span class="archive-entry-title">{{ legacy_title }}</span>
+    {% elif post.title and post.title is not starting_with(pat="#") %}
+      <span class="archive-entry-title">{{ post.title }}</span>
+    {% else %}
+      <span class="archive-entry-title">Untitled post</span>
+    {% endif %}
+    </a>
+
+    <span class="archive-entry-meta">
+      <a class="post-date-link" href="{{ post.permalink }}">
+        <time datetime="{{ post.date }}">
+          {{ post.date | date(format="%b %-d, %Y") }}
+        </time>
+      </a>
+
+      {% include "partials/tags.html" %}
+    </span>
+  </div>
+</li>

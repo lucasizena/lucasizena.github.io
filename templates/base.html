@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{{ config.description }}">
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    sizes="32x32"
+    href="{{ get_url(path='favicon.svg', cachebust=true) }}"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;display=swap"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/katex.min.css"
+    integrity="sha384-KfwFj/Q/jGrY4ijtfzWyW5NXzT5irvfnTq6aRnH2xPvLzLdi1XyVr7w4l2uwTq0V"
+    crossorigin="anonymous"
+  >
+
+  <link
+    rel="stylesheet"
+    href="{{ get_url(path='style.css', cachebust=true) }}"
+  >
+
+  <link
+    rel="alternate"
+    type="application/atom+xml"
+    title="{{ config.title }}"
+    href="{{ get_url(path='atom.xml') }}"
+  >
+
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/katex.min.js"
+    integrity="sha384-OE4SMRr5gMJQzKSD08J46vKsKgY8NxVtO1LW+/q3NJ0WHsGsdN4oebgEjwwWuyvG"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.18.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="{{ get_url(path='math.js', cachebust=true) }}" defer></script>
+</head>
+<script src="{{ get_url(path='page-transitions.js', cachebust=true) }}"></script>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="title">
+        <a href="{{ get_url(path='@/_index.md') }}">
+          {{ config.title }}
+        </a>
+      </div>
+
+      <div class="sub-title">
+        {{ config.extra.tagline }}
+      </div>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="{{ get_url(path='@/_index.md') }}">Home</a>
+        <a href="{{ get_url(path='@/about/_index.md') }}">About</a>
+        <a href="{{ get_url(path='@/archive/_index.md') }}">Archive</a>
+      </nav>
+
+      {% if config.extra.pinned_posts %}
+        <aside class="pinned-posts" aria-labelledby="pinned-heading">
+          <h2 id="pinned-heading">Pinned posts</h2>
+
+          <ul>
+            {% for post_path in config.extra.pinned_posts %}
+              {% if loop.index <= 10 %}
+                {% set pinned_post = get_page(path=post_path) %}
+
+                <li>
+                  <a href="{{ pinned_post.permalink }}">
+                    {% if pinned_post.title %}
+                    {{ pinned_post.title }}
+                    {% else %}
+                    Untitled post
+                    {% endif %}
+                  </a>
+
+                  <time datetime="{{ pinned_post.date }}">
+                    {{ pinned_post.date | date(format="%b %-d, %Y") }}
+                  </time>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </aside>
+      {% endif %}
+    </header>
+
+    <section class="content">
+      <span class="content-blur-sentinel" aria-hidden="true"></span>
+      <div class="content-top-blur" aria-hidden="true"></div>
+      {% block content %}{% endblock content %}
+    </section>
+
+    <footer>
+      <div class="footer-inspiration">
+        Inspired by
+        <a href="https://web.evanchen.cc/wall.html" target="_blank" rel="noopener">
+          writing on a wall
+        </a>
+        by Evan Chen
+      </div>
+    </footer>
+  </div>
+
+  {% if config.extra.math_particles_enabled %}
+    <div
+        id="math-trail"
+        class="math-trail"
+        aria-hidden="true"
+    ></div>
+  {% endif %}
+
+  {% if config.extra.math_particles_enabled %}
+    <script
+        src="{{ get_url(path='math-trail.js', cachebust=true) }}"
+        defer
+    ></script>
+  {% endif %}
+  <script src="{{ get_url(path='archive-search.js', cachebust=true) }}" defer></script>
+  <script src="{{ get_url(path='read-more.js', cachebust=true) }}" defer></script>
+  <script src="{{ get_url(path='top-blur.js', cachebust=true) }}" defer></script>
+</body>
+</html>

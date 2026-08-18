@@ -1,0 +1,23 @@
+base_url = "https://lucasizena.github.io"
+
+title = "Lucas Izena"
+description = "Updates on things I'm doing, thinking, and learning"
+author = "Lucas Izena"
+default_language = "en"
+
+compile_sass = false
+minify_html = true
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+taxonomies = [
+  { name = "tags", feed = true },
+]
+
+[extra]
+tagline = "Updates on things I'm doing, thinking, and learning"
+
+pinned_posts = [
+    "001.md",
+]
+
+math_particles_enabled = false

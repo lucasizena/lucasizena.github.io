@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% set wall_view = true %}
+
+  {% for post in section.pages %}
+    {% include "partials/post.html" %}
+  {% endfor %}
+{% endblock content %}
