@@ -17,7 +17,7 @@ taxonomies = [
 tagline = "Updates on things I'm doing, thinking, and learning"
 
 pinned_posts = [
-    "001.md",
+    "first-post.md",
 ]
 
 math_particles_enabled = false
