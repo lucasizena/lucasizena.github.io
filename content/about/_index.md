@@ -11,6 +11,6 @@ I made this microblog mostly for myself because I thought it'd be interesting to
 
 You can follow microblog using the [Atom feed](/atom.xml).
 
-You can also find me on [GitHub](https://github.com/lucasizena) and [LinkedIn](https://www.linkedin.com/in/lucas-izena-a39315386/). You can reach me out at [lucas.izena@natmatsci.ac.uk](mailto:lucas.izena@natmatsci.ac.uk). If you find a bug or typo in this website, please open an issue or pull request on [GitHub](https://github.com/lucasizena/lucasizena.github.io) or just email me.
+You can also find me on [GitHub](https://github.com/lucasizena) and [LinkedIn](https://www.linkedin.com/in/lucas-izena-a39315386/). You can reach me out at [lucas.izena@natmatsci.ac.uk](mailto:lucas.izena@natmatsci.ac.uk). If you find a bug or typo, or have any suggestions, please open an issue or pull request on [GitHub](https://github.com/lucasizena/lucasizena.github.io) or just email me.
 
 This blog was built with [Zola](https://www.getzola.org/), and was inspired by Evan Chen's microblog [writing on a wall](https://wall.evanchen.cc/).
