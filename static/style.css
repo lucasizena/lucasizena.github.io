@@ -542,6 +542,7 @@ header .sub-title {
 button.tag-chip {
   margin: 0;
   border: 0;
+  cursor: pointer;
 }
 
 .tag-chip[aria-pressed="true"] {
