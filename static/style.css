@@ -716,21 +716,6 @@ footer {
   line-height: 1.55;
 }
 
-.footer-inspiration,
-.footer-inspiration a {
-  color: var(--muted);
-}
-
-.footer-inspiration a:hover,
-.footer-inspiration a:focus-visible {
-  color: var(--interactive);
-}
-
-.footer-inspiration {
-  max-width: 250px;
-  margin-top: 4px;
-}
-
 .math-trail {
   position: fixed;
   z-index: 0;
