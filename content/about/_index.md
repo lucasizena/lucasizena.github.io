@@ -3,7 +3,7 @@ title = "About"
 template = "about.html"
 +++
 
-Hi! I'm Lucas. Some of my interests include maths, maths olympiads, machine learning, and programming. I currently live in Coventry, UK, and I'm a Sixth Form student at [The National Mathematics and Science College](https://natmatsci.ac.uk/). 
+Hi! I'm Lucas. Some of my interests include maths, maths olympiads, deep learning, and programming. I currently live in Coventry, UK, and I'm a Sixth Form student at [The National Mathematics and Science College](https://natmatsci.ac.uk/). 
 
 Most of the times in this microblog I'll be talking about topics related to my interests, but occasionally I'll discuss unrelated things like random thoughts that pop up in my head throughout the day. You can check out the different topics of each of my posts in the [Archive](https://lucasizena.github.io/archive/).
 
