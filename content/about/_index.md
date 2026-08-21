@@ -7,9 +7,9 @@ Hi! I'm Lucas. Some of my interests include maths, maths olympiads, machine lear
 
 Most of the times in this microblog I'll be talking about topics related to my interests, but occasionally I'll discuss unrelated things like random thoughts that pop up in my head throughout the day. You can check out the different topics of each of my posts in the [archive](https://lucasizena.github.io/archive/).
 
-I made this microblog mostly for myself because I thought it'd be interesting to keep a record of some of the things I do, and as such a lot of the posts here may be slightly disorganised or unpolished, but they will always be honest reflections of what I genuinely thought and felt at the time. For this reason, please don't take anything that I write here too seriously! Meanwhile, I'll (sometimes) try to post things that may be of some use, such as giving instructive walkthroughs through maths problems, talking about how I learn and improve myself, or discussing some interesting topic that I've recently come across. 
+I made this microblog mostly for myself because I thought it'd be interesting to keep a record of some of the things I do (and to see how my interests and way of thinking develop as time progresses), and as such a lot of the posts here may be slightly disorganised or unpolished, but they will always be honest reflections of what I genuinely thought and felt at the time. For this reason, please don't take anything that I write here too seriously! Meanwhile, I'll (sometimes) try to post things that may be of some use, such as giving instructive walkthroughs through maths problems, talking about how I learn and improve myself, or discussing some interesting topic that I've recently come across. 
 
-You can follow microblog using the [Atom feed](/atom.xml).
+You can follow the microblog using the [Atom feed](/atom.xml).
 
 You can also find me on [GitHub](https://github.com/lucasizena) and [LinkedIn](https://www.linkedin.com/in/lucas-izena-a39315386/). You can reach me out at [lucas.izena@natmatsci.ac.uk](mailto:lucas.izena@natmatsci.ac.uk). If you find a bug or typo, or have any suggestions, please open an issue or pull request on [GitHub](https://github.com/lucasizena/lucasizena.github.io) or just email me.
 
