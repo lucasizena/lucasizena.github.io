@@ -19,6 +19,9 @@
       ],
       throwOnError: false,
       strict: "warn",
+      macros: {
+        "\\msub": "_",
+      },
     });
 
     content.dataset.mathRendered = "true";

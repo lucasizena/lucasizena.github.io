@@ -92,6 +92,10 @@ strong {
   font-weight: 500;
 }
 
+em {
+  font-style: italic;
+}
+
 a {
   color: var(--ink);
   text-decoration: none;
@@ -242,6 +246,7 @@ header .sub-title {
 }
 
 .content {
+  position: relative;
   float: right;
   width: 630px;
   padding-bottom: 50px;
@@ -282,14 +287,6 @@ header .sub-title {
   opacity: 0.82;
 }
 
-.content h1 {
-  margin: 0 0 34px;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1;
-}
-
 .content h2 {
   font-size: 22px;
   font-weight: 500;
@@ -308,6 +305,20 @@ header .sub-title {
   margin: 24px 0 14px;
   font-size: 15px;
   font-weight: 500;
+  line-height: 1.55;
+}
+
+.post-body-content h1,
+.post-body-content h2,
+.post-body-content h3,
+.post-body-content h4,
+.post-body-content h5,
+.post-body-content h6 {
+  margin: 24px 0 14px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: normal;
   line-height: 1.55;
 }
 
@@ -827,10 +838,6 @@ input[type="reset"] {
     padding: 32px 20px;
   }
 
-  .content h1 {
-    font-size: 28px;
-  }
-
   .archive-search {
     flex-basis: 132px;
   }
@@ -871,4 +878,197 @@ input[type="reset"] {
     overflow-y: auto;
     overscroll-behavior: contain;
   }
+}
+
+/* Footnote number in the post text */
+
+.footnote-reference {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+  scroll-margin-top: 30px;
+}
+
+.content .footnote-reference > a {
+  color: var(--interactive);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.content .footnote-reference > a:hover,
+.content .footnote-reference > a:focus-visible {
+  color: var(--interactive-light);
+}
+
+/* Footnote list used on narrower screens */
+
+.footnotes {
+  margin-top: 36px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.footnotes-list {
+  margin: 0;
+  padding-left: 1.5em;
+}
+
+.footnotes-list li {
+  padding-left: 4px;
+  scroll-margin-top: 30px;
+}
+
+.footnotes-list li::marker {
+  color: var(--interactive);
+  font-weight: 500;
+}
+
+.footnotes-list p {
+  margin-bottom: 10px;
+}
+
+/* Return arrows */
+
+.content .footnotes a[href*="#fr-"] {
+  color: var(--interactive);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.content .footnotes a[href*="#fr-"]:hover,
+.content .footnotes a[href*="#fr-"]:focus-visible {
+  color: var(--interactive-light);
+}
+
+/* Ordinary links inside footnotes */
+
+.content .footnotes a:not([href*="#fr-"]) {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.content .footnotes a:not([href*="#fr-"]):hover,
+.content .footnotes a:not([href*="#fr-"]):focus-visible {
+  color: var(--interactive);
+}
+
+/* Generated desktop sidenotes */
+
+.sidenote {
+  display: none;
+}
+
+.sidenote-block:first-child {
+  display: inline;
+}
+
+.sidenote-block:not(:first-child) {
+  display: block;
+  margin-top: 0.55em;
+}
+
+@media screen and (min-width: 1250px) {
+  .post-body.has-sidenotes .footnotes {
+    display: none;
+  }
+
+  .sidenote:not([hidden]) {
+    --sidenote-gap: 24px;
+    --sidenote-width: clamp(
+      100px,
+      calc((100vw - 950px) / 2 - 60px),
+      176px
+    );
+
+    display: block;
+    position: absolute;
+    left: calc(100% + var(--sidenote-gap));
+    width: var(--sidenote-width);
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.45;
+    scroll-margin-top: 30px;
+    text-align: left;
+  }
+
+  .sidenote:not([hidden])::before {
+    content: attr(data-number) ". ";
+    color: var(--interactive);
+    font-weight: 500;
+  }
+
+  .content .sidenote a {
+    color: var(--muted);
+    text-decoration: underline;
+  }
+
+  .content .sidenote a:hover,
+  .content .sidenote a:focus-visible {
+    color: var(--interactive);
+  }
+}
+
+.math-statement {
+  display: flow-root;
+  margin: 24px 0;
+  scroll-margin-top: 40px;
+}
+
+.math-statement-heading {
+  float: left;
+  margin-right: 0.35em;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.math-statement-title {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.math-statement-body > :first-child {
+  margin-top: 0;
+}
+
+.math-statement-body > :last-child {
+  margin-bottom: 0;
+}
+
+.math-proof {
+  position: relative;
+  display: flow-root;
+  margin: 24px 0;
+  padding-right: 1.5em;
+}
+
+.math-proof-heading {
+  float: left;
+  margin-right: 0.35em;
+  color: var(--ink);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.math-proof-body > :first-child {
+  margin-top: 0;
+}
+
+.math-proof-body > :last-child {
+  margin-bottom: 0;
+}
+
+.math-proof-qed {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
 }

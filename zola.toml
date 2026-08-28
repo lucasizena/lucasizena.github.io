@@ -13,11 +13,15 @@ taxonomies = [
   { name = "tags", feed = true },
 ]
 
+[markdown]
+bottom_footnotes = true
+
 [extra]
 tagline = "Updates on things I'm doing, thinking, and learning"
 
 pinned_posts = [
     "first-post.md",
+    "IMO-2009-2.md",
 ]
 
 math_particles_enabled = false

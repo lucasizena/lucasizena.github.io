@@ -1,0 +1,33 @@
+{% component statement(kind, number="", title="", label="") %}
+<div
+  class="math-statement"
+  {% if label %}id="{{ label }}"{% endif %}
+>
+  <span class="math-statement-heading">
+    {{ kind }}{% if number %} {{ number }}{% endif %}{% if title %}
+      <span class="math-statement-title">({{ title }})</span>{% endif %}.
+  </span>
+
+  <div class="math-statement-body">
+    {{ body | markdown | safe }}
+  </div>
+</div>
+{% endcomponent statement %}
+
+{% component proof(of="", href="") %}
+<div class="math-proof">
+  <span class="math-proof-heading">
+    Proof{% if of %} of
+      {% if href %}
+        <a href="{{ href }}">{{ of }}</a>
+      {% else %}
+        {{ of }}
+      {% endif %}
+    {% endif %}.
+  </span>
+  <div class="math-proof-body">
+    {{ body | markdown | safe }}
+  </div>
+  <span class="math-proof-qed" aria-label="End of proof">$\square$</span>
+</div>
+{% endcomponent proof %}
