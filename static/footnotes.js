@@ -1,5 +1,135 @@
 (() => {
   const wideScreen = window.matchMedia("(min-width: 1250px)");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  const jumpToElement = (element) => {
+    const startY = window.scrollY;
+    const maximumY = Math.max(
+      0,
+      document.documentElement.scrollHeight - window.innerHeight
+    );
+    const destinationY = Math.max(
+      0,
+      Math.min(
+        element.getBoundingClientRect().top + startY - 64,
+        maximumY
+      )
+    );
+
+    window.scrollTo({
+      top: destinationY,
+      left: 0,
+      behavior: "instant"
+    });
+  };
+
+  const playFadeIn = () => {
+    const surface =
+      document.querySelector(".wrapper") || document.body;
+
+    if (
+      reducedMotion.matches ||
+      typeof surface.animate !== "function"
+    ) {
+      return;
+    }
+
+    const animation = surface.animate(
+      [{ opacity: 0.05 }, { opacity: 1 }],
+      {
+        duration: 320,
+        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+        fill: "both"
+      }
+    );
+
+    animation.finished
+      .catch(() => {})
+      .then(() => animation.cancel());
+  };
+
+  const playFallbackFade = async (update) => {
+    const surface =
+      document.querySelector(".wrapper") || document.body;
+
+    if (
+      reducedMotion.matches ||
+      typeof surface.animate !== "function"
+    ) {
+      update();
+      return;
+    }
+
+    const fadeOut = surface.animate(
+      [{ opacity: 1 }, { opacity: 0.05 }],
+      {
+        duration: 140,
+        easing: "ease-out",
+        fill: "both"
+      }
+    );
+
+    await fadeOut.finished.catch(() => {});
+    update();
+    fadeOut.cancel();
+    playFadeIn();
+  };
+
+  const fadeToElement = (element, href, beforeJump) => {
+    const update = () => {
+      beforeJump?.();
+      jumpToElement(element);
+      history.replaceState(null, "", href);
+    };
+
+    if (reducedMotion.matches) {
+      update();
+      return;
+    }
+
+    if (typeof document.startViewTransition === "function") {
+      try {
+        const transition = document.startViewTransition(update);
+
+        transition.ready.catch(playFadeIn);
+        return;
+      } catch {
+        /* Fall through to the Web Animations fallback. */
+      }
+    }
+
+    void playFallbackFade(update);
+  };
+
+  const revealPost = (post) => {
+    if (!post.classList.contains("is-collapsed")) {
+      return;
+    }
+
+    post.classList.remove(
+      "is-collapsed",
+      "is-expanding",
+      "is-collapsing"
+    );
+    post.style.removeProperty("overflow");
+
+    const button = document.getElementById(
+      post.dataset.collapseButton
+    );
+
+    if (button) {
+      button.hidden = false;
+      button.setAttribute("aria-expanded", "true");
+
+      const label = button.querySelector(".read-more-label");
+
+      if (label) {
+        label.textContent = "Show less";
+      }
+    }
+  };
 
   const createSidenotes = () => {
     const contentColumn = document.querySelector(".content");
@@ -106,7 +236,34 @@
            */
           contentColumn.append(sidenote);
 
-          const bottomHref = link.getAttribute("href");
+          const postKey = post.id || `post-${postIndex + 1}`;
+          const localDefinitionId =
+            `${postKey}-fn-${referenceIndex + 1}`;
+          const localReferenceId =
+            `fr-${postKey}-${referenceIndex + 1}`;
+
+          definition.id = localDefinitionId;
+          reference.id = localReferenceId;
+
+          /* Keep the return arrow on the current Wall page too. */
+          definition
+            .querySelectorAll('a[href*="#fr-"]')
+            .forEach((backLink) => {
+              backLink.setAttribute(
+                "href",
+                `#${localReferenceId}`
+              );
+
+              backLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                fadeToElement(
+                  reference,
+                  `#${localReferenceId}`
+                );
+              });
+            });
+
+          const bottomHref = `#${localDefinitionId}`;
 
           const updateTarget = () => {
             link.setAttribute(
@@ -116,6 +273,18 @@
                 : bottomHref
             );
           };
+
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+
+            const useSidenote = wideScreen.matches;
+
+            fadeToElement(
+              useSidenote ? sidenote : definition,
+              useSidenote ? `#${sidenote.id}` : bottomHref,
+              useSidenote ? null : () => revealPost(post)
+            );
+          });
 
           wideScreen.addEventListener("change", updateTarget);
           updateTarget();
