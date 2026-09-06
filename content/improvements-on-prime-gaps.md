@@ -20,3 +20,7 @@ $$
 G(X) = \frac{\log X (\log \log X)^2 \log \log \log \log X}{(\log \log \log X)^2}.
 \end{aligned}
 $$
+
+I think these are certainly impressive and should definitely be celebrated, but I don't really understand the point of using AI on these kinds of problems[^hypocrisy]. By that I mean, as mentioned by Tao [in this post](https://mathstodon.xyz/@tao/117219548485446992 ), that there aren't really any real world applications to problems like these, or even significant impacts within analytic number theory itself. As an analogy, these problems are somewhat like interesting puzzles that you wouldn't really want to be given the answer to before you solve it yourself. In fact, I think using AI for this kind of stuff in particular could actually be harmful for lots of reasons I won't go into in this post (maybe in a future one). Anyway, they do serve as good benchmarks to measure AI capabilities (but also they're much more than that). 
+
+[^hypocrisy]: This is kind of hypocritical because do I occasionally test AI capabilities using open problems for fun 
