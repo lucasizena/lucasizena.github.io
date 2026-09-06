@@ -3,7 +3,7 @@ title = "Improvements in prime gaps"
 date = 2026-09-06T00:00:00+01:00
 
 [taxonomies]
-tags = ["sieve methods", "number theory", "maths"]
+tags = ["AI", "sieve methods", "number theory", "maths"]
 +++
 
 Recently, [Stadlmann](https://arxiv.org/abs/2608.31126) improved the bound on small gaps between primes to $\liminf (p_{n + 1} - p_n) \le 240$, and then [OpenAI's ChatGPT 6 Astra](https://cdn.openai.com/pdf/51126fac-1b68-4128-9666-c908bcc16033/short_gaps.pdf) improved this slightly to $\le 186$.
