@@ -10,7 +10,7 @@ I've just seen now that [Lech Mazur in ProofAtlas](https://www.proofatlas.ai/pap
 $$
 T(n) = 
 \begin{cases}
-    n / 2 & \text{if } n \text{ even}, \\
+    n / 2 & \text{if } n \text{ even}, \\\\
     3n + 1 & \text{otherwise.}
 \end{cases}
 $$
