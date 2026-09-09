@@ -6,7 +6,7 @@ date = 2026-09-09T08:00:00+01:00
 tags = ["AI", "maths", "combinatorics"]
 +++
 
-I've just seen now that [Lech Mazur in ProofAtlas](https://www.proofatlas.ai/papers/positive-density-log-time-collatz/Mazur_Explicit_Positive_Density_Collatz_Convergence_in_Logarithmic_Time_v2.pdf) has proved that for all large enough positive integers $X$ (for some explicit bound $X \ge X_0$), at least $\gg X$ positive integers $n < X$ (for some small explicit constant $c$) satisfy $\tau(n) \ll \log n$ (again, for some explicit constant), where $\tau(n)$ is the least number of iterates of 
+I've just seen now that [Lech Mazur from ProofAtlas](https://www.proofatlas.ai/papers/positive-density-log-time-collatz/Mazur_Explicit_Positive_Density_Collatz_Convergence_in_Logarithmic_Time_v2.pdf) has proved that for all large enough positive integers $X$ (for some explicit bound $X \ge X_0$), at least $\gg X$ positive integers $n < X$ (for some small explicit constant $c$) satisfy $\tau(n) \ll \log n$ (again, for some explicit constant), where $\tau(n)$ is the least number of iterates of 
 $$
 T(n) = 
 \begin{cases}
