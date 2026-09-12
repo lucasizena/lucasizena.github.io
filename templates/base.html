@@ -116,21 +116,6 @@
       </div>
     </footer>
   </div>
-
-  {% if config.extra.math_particles_enabled %}
-    <div
-        id="math-trail"
-        class="math-trail"
-        aria-hidden="true"
-    ></div>
-  {% endif %}
-
-  {% if config.extra.math_particles_enabled %}
-    <script
-        src="{{ get_url(path='math-trail.js', cachebust=true) }}"
-        defer
-    ></script>
-  {% endif %}
   <script src="{{ get_url(path='archive-search.js', cachebust=true) }}" defer></script>
   <script src="{{ get_url(path='read-more.js', cachebust=true) }}" defer></script>
   <script src="{{ get_url(path='top-blur.js', cachebust=true) }}" defer></script>

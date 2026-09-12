@@ -20,8 +20,6 @@ bottom_footnotes = true
 tagline = "A blog by Lucas Izena"
 
 pinned_posts = [
-    "first-post.md",
     "IMO-2009-2.md",
+    "first-post.md",
 ]
-
-math_particles_enabled = false
