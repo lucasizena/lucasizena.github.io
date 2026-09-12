@@ -1,7 +1,7 @@
 base_url = "https://lucasizena.github.io"
 
-title = "Lucas Izena"
-description = "Updates on things I'm doing, thinking, and learning"
+title = "lucasizena.github.io"
+description = "A blog by Lucas Izena"
 author = "Lucas Izena"
 default_language = "en"
 
@@ -17,7 +17,7 @@ taxonomies = [
 bottom_footnotes = true
 
 [extra]
-tagline = "Updates on things I'm doing, thinking, and learning"
+tagline = "A blog by Lucas Izena"
 
 pinned_posts = [
     "first-post.md",
